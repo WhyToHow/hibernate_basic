@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 30, 2016 9:42:45 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+<!-- 关于一些单表查询的 -->
+    <class name="com.employee.Employee" table="EMPLOYEE">
+    	<!-- 复合主键映射 -->
+<!-- 		<composite-id name="keys"> -->
+<!-- 			<key-property name="userName" type="string"></key-property> -->
+<!-- 			<key-property name="address" type="string"></key-property> -->
+<!-- 		</composite-id> -->
+    	
+    
+    <!-- 主键映射 -->
+        <id name="empId" type="int">
+            <column name="EMPID" />
+            <generator class="assigned" />
+        </id>
+        <property name="empName" type="java.lang.String">
+            <column name="EMPNAME" />
+        </property>
+        <property name="workDate" type="java.util.Date">
+            <column name="WORKDATE" />
+        </property>
+    </class>
+</hibernate-mapping>

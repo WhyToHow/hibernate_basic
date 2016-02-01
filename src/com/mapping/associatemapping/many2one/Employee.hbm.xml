@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+	<!-- 注意是在多对一的 多的一方才存在外键字段！！！！！！！！ 所以多对一 一对多配置的外键字段是同一个 -->
+<hibernate-mapping package="com.mapping.associatemapping.many2one">
+	<class name="Employee" table="employee">
+		<id name="employeeId">
+			<column name="employeeid"></column>
+			<generator class="native"></generator>
+		</id>
+		
+		<!-- 指定类型后再指定大小 大小是没有用的 -->
+		<property name="employeeName" type="java.lang.String" length="20">
+			<column name="employeeName"></column>
+		</property>
+	
+		<!-- 多对一的关联映射配置 -->
+		<!-- column 是指定本表的外键字段 -->
+		<many-to-one name="dept" column="deptId" class="com.mapping.associatemapping.one2many.Dept"></many-to-one>
+		
+		
+	
+	
+	</class>
+
+
+
+</hibernate-mapping>

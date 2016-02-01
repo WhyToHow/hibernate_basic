@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mapping.associatemapping.one2one">
+	<class name="IdCard" table="t_idcard">
+		<id name="cardNum" type="java.lang.String">
+			<column name="card_num"></column>
+			<generator class="assigned"></generator>
+		</id>
+		
+		<property name="place" length="20"></property>
+		<!-- 基于外键的一对一映射
+			一对一 有外键方
+			需要设置外键字段 值为唯一
+		 -->
+		 <many-to-one name="user" unique="true" column="user_id" class="User"></many-to-one>		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mapping.associatemapping.many2many">
+	<class name="Developer" table="t_developer">
+		<id name="developerId" column="developer_id">
+			<generator class="native"></generator>
+		</id>
+		
+		<property name="developerName" column="developer_name" length="20"></property>
+		
+		<!-- 多对多主要是映射文件的配置 不好理解  须好好分清外键的对应关系
+		
+			多对多需要一个中间表
+			key 是这个映射实体类对应于这个中间表的外键字段
+			many-to-many 中column是对应于多对多映射表的外键字段 
+						class 是对应于多对多的实体类
+		
+		 -->
+		<set name="projects" table="t_relation">
+			<key column="d_id"></key>
+			<many-to-many column="p_id" class="Project"></many-to-many>
+		</set>
+	
+	
+	
+	</class>
+</hibernate-mapping>

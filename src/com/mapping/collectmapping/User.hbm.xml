@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mapping.collectmapping">
+	<class name="User" table="t_user">
+	<!-- 必须指定表名 因为user是数据库关键字 -->
+		<id name="userId" column="userid">
+			<generator class="native"></generator>
+		</id>
+		
+		<property name="userName" column="userName" type="java.lang.String">
+		
+		</property>
+		
+		<!-- 集合映射的设置 -->
+		<!-- set -->
+		<set name="address_set" table="address_set"><!-- 要映射的表 -->
+			<key column="user_id"></key><!-- 外键字段 -->
+			<element column="address" type="java.lang.String"></element><!-- 表中的其他字段 属性必须指定 -->
+		</set>
+		<!-- list 是有顺序的 有一个索引列-->
+		<list name="address_list" table="address_list">
+			<key column="user_id"></key>
+			<list-index column="list_index"></list-index>
+			<element column="address" type="java.lang.String"></element>
+		</list>
+		
+		<!-- map 键值对存放 有key 有value列-->
+		<map name="address_map" table="address_map">
+			<key column="user_id"></key>
+			<map-key column="address_key" type="java.lang.String">
+				<!-- map index element must specify a type: com.mapping.collectmapping.User.address_map -->
+			</map-key>
+			<element column="address" type="java.lang.String"></element>
+		</map>
+	
+	
+	</class>
+
+
+
+
+</hibernate-mapping>

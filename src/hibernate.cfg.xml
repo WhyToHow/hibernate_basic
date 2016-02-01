@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+    	<!-- 链接数据库的配置 -->
+    	<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+    	<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:orcl</property>
+    	<property name="hibernate.connection.username">scott</property>
+    	<property name="hibernate.connection.password">tiger</property>
+    	<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+    	<!-- 其他配置 -->
+    	<property name="hibernate.show_sql">true</property>
+    	<!-- 自动建表语句    慎用 特别是关联映射的时候容易把表结构修改了
+    	create 
+    	update
+    	create-drop
+    	validate
+    	-->
+    	<property name="hibernate.hbm2ddl.auto">update</property>
+    	<!-- 映射 -->
+    	
+    	<!-- 单个表的增删改查 基本操作 含分页查询与条件查询-->
+<!--     	<mapping resource="com/employee/Employee.hbm.xml"/> -->
+
+		<!-- 集合映射  映射的都为基本类型 -->
+<!-- 		<mapping resource="com/mapping/collectmapping/User.hbm.xml"/> -->
+
+		<!-- 关联映射 多对1  一对多    保存的为对象 -->
+<!-- 			<mapping resource="com/mapping/associatemapping/many2one/Employee.hbm.xml"/> -->
+<!-- 			<mapping resource="com/mapping/associatemapping/one2many/Dept.hbm.xml"/> -->
+			
+    	<!-- 关联映射 多对多 防止数据冗余 会出现一个中间表 其两个外键字段 关联另外两个表 -->
+<!-- 			<mapping resource="com/mapping/associatemapping/many2many/Developer.hbm.xml"/> -->
+<!-- 			<mapping resource="com/mapping/associatemapping/many2many/Project.hbm.xml"/> -->
+		<!-- 关联映射 一对一 基于外键  -->
+				<mapping resource="com/mapping/associatemapping/one2one/IdCard.hbm.xml"/>
+				<mapping resource="com/mapping/associatemapping/one2one/User.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

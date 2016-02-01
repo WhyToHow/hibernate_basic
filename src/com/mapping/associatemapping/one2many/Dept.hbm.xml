@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mapping.associatemapping.one2many">
+	<class name="Dept" table="Department">
+		<id name="deptId">
+			<column name="deptid"></column>
+			<generator class="native"></generator>
+		</id>
+		
+		<!-- 指定java类型后再制定大小   大小没有影响 默认255char -->
+		<property name="deptName" type="java.lang.String" length="20">
+			<column name="deptName"></column>
+		</property>
+	
+		<!-- 一对多的关联映射配置  可以忽略集合表的指定-->
+		<!-- inverse 
+			控制反转 只在one一方起作用
+			默认 false 拥有维护关联关系的权限
+			true 时，放弃权限 即不能维护关联关系
+		-->
+		<!-- cascade
+			级联操作 在many 与 one 都有此设置
+			none 默认值 不级联操作
+			save-update 级联保存或更新
+			delete 级联删除
+			save-update,delete 级联保存 更新 删除
+			all 同上
+		 -->
+		<set name="employees" table="employee" >
+			<!-- 指定集合表的外键字段 -->
+			<key column="deptId"></key>
+			<one-to-many class="com.mapping.associatemapping.many2one.Employee"/>
+		</set>
+		
+	</class>
+</hibernate-mapping>

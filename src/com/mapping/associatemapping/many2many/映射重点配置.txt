@@ -1,0 +1,14 @@
+一对多:
+	<set name="映射的集合属性" table="(可选)集合属性对应的外键表">
+	   <key column="外键表的，外键字段" />
+	   <one-to-many class="集合元素的类型" />
+	</set>
+
+多对一：
+    <many-to-one name="对象属性" class="对象类型" column="外键字段字段" />
+
+多对多
+    <set name="" table="">
+        <key column="" />
+        <many-to-many column="" class="">
+    </set>
